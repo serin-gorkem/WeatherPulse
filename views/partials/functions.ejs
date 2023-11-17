@@ -1,0 +1,35 @@
+
+<% function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success)
+    }
+}
+function success(position) {
+    const crd = position.coords;
+    const latitude = crd.latitude;
+    const longitude = crd.longitude;
+}
+
+// const currentLoc = document.getElementById("demo");
+//         function getLocation() {
+//             if (navigator.geolocation) {
+//                 navigator.geolocation.getCurrentPosition(success)
+//             } else {
+//                 currentLoc.innerHTML = "Geolocation is not supported by this browser.";
+//             }
+//         }
+//         function success(position) {
+//             const crd = position.coords;
+//             currentLoc.innerHTML = "Latitude: " + crd.latitude +"<br>Longitude: " + crd.longitude
+//         }
+//         getLocation();
+        function enter(e) {
+            if(e && e.which === 13){
+                sendform();
+            }
+        }
+        function sendform() {
+            const form = document.getElementById("submit-city-name");
+            form.submit();
+        }
+%>
