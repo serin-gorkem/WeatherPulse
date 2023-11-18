@@ -16,6 +16,8 @@ module.exports = {
         'secondary-lgt': "#EAD7BB",
         'primary-drk': "#041C32",
         'secondary-drk': "#04293A",
+        'icons-lgt':"#3F5781",
+        'icons-drk':"#FF7A00",
       },
       backgroundImage: {
 

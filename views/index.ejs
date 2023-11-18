@@ -1,7 +1,46 @@
-<%- include("partials/header.ejs") %>
 <%- include("partials/functions.ejs") %>
-        <form method="post" id="submit-city-name">
-            <label for="city_name">
-                <input id="city_input" type="text" name="city_name" placeholder="Search" onkeydown="enter" required>
-            </label>
-        </form>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/style.css">
+        <title>Weather Pulse</title>
+    </head>
+
+    <body class="min-h-screen bg-[url('/img/sky-sunset.jpg')] bg-cover bg-center relative">
+        <header class="px-4 py-4 z-10 w-full bg-transparent absolute">
+            <nav class="flex gap-4  justify-start max-container relative mx-auto" aria-label="main">
+                <a href="/">
+                    <h1 class="text-white font-title font-semibold sm:text-lg text-sm">Weather Pulse</h1>
+                </a>
+                <a href="/" class="sm:w-10 sm:h-10 w-7 h-7">
+                    <img src="img/logo.png" alt="Logo" class="bg-center" />
+                </a>
+            </nav>
+        </header>
+        <main class="min-h-screen relative">
+            <section class="min-h-screen">
+            </section>
+            <section
+                class="flex items-center justify-center h-full bg-transparent z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-container ">
+                <form method="post" id="submit-city-name" class="sm:w-3/5 w-5/6 relative">
+                    <button type="reset" class="absolute top-3 right-3 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6l-5.6 5.6Z" />
+                        </svg>
+                    </button>
+                    <input id="city_input" type="text" name="city_name" placeholder="Search" onkeydown="enter" required
+                        class="py-2.5 px-16 w-full rounded-md">
+                    <button class="absolute left-3 top-2.5  cursor-pointer z-10" onclick="sendForm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M9.5 4a6.5 6.5 0 0 1 6.5 6.5c0 1.62-.59 3.1-1.57 4.23l5.65 5.65l-.71.71l-5.65-5.65A6.469 6.469 0 0 1 9.5 17A6.5 6.5 0 0 1 3 10.5A6.5 6.5 0 0 1 9.5 4m0 1A5.5 5.5 0 0 0 4 10.5A5.5 5.5 0 0 0 9.5 16a5.5 5.5 0 0 0 5.5-5.5A5.5 5.5 0 0 0 9.5 5Z" />
+                        </svg>
+                    </button>
+                </form>
+            </section>
+        </main>
+        <%- include("partials/footer.ejs") %>
