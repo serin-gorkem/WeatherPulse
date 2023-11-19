@@ -596,16 +596,32 @@ video {
   height: 1rem;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .h-7 {
   height: 1.75rem;
+}
+
+.h-8 {
+  height: 2rem;
 }
 
 .h-full {
   height: 100%;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .w-5\/6 {
@@ -616,8 +632,16 @@ video {
   width: 1.75rem;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .max-w-xs {
@@ -682,6 +706,14 @@ video {
   gap: 1rem;
 }
 
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .whitespace-nowrap {
   white-space: nowrap;
 }
@@ -703,12 +735,27 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-transparent {
   background-color: transparent;
 }
 
-.bg-\[url\(\'\/img\/sky-sunset\.jpg\'\)\] {
-  background-image: url('/img/sky-sunset.jpg');
+.bg-primary-lgt {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 242 216 / var(--tw-bg-opacity));
+}
+
+.bg-secondary-drk {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 41 58 / var(--tw-bg-opacity));
+}
+
+.bg-\[url\(\'https\:\/\/openweathermap\.org\/img\/wn\/03d\@2x\.png\'\)\] {
+  background-image: url('https://openweathermap.org/img/wn/03d@2x.png');
 }
 
 .bg-cover {
@@ -721,6 +768,14 @@ video {
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-10 {
@@ -763,6 +818,16 @@ video {
   padding-bottom: 2rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .font-body {
   font-family: Lato, sans-serif;
 }
@@ -789,6 +854,11 @@ video {
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -808,6 +878,10 @@ video {
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.outline-dashed {
+  outline-style: dashed;
 }
 
 .padding-x {
@@ -836,6 +910,13 @@ video {
 
 .hover\:opacity-25:hover {
   opacity: 0.25;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-primary-drk {
+    --tw-bg-opacity: 1;
+    background-color: rgb(4 28 50 / var(--tw-bg-opacity));
+  }
 }
 
 @media not all and (min-width: 1024px) {

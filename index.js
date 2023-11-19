@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.get("/", (req,res) =>{
-  res.render("index");
+  res.render("index"); //should be index
 })
 app.post("/", async (req,res) => {
   // Inside 
@@ -35,7 +35,7 @@ app.post("/", async (req,res) => {
     const weather = await axios.get(API_URL + `lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`);
     //console.log(API_URL + `lat=${latitude}&lon=${longitude}&exclude=current&appid=${API_KEY}`);
     //console.log(weather.data.daily[0].temp.day);
-    res.render("location", {city: city.data[0], weather: weather.data.current });
+    res.render("location", {city: city.data[0], data: weather.data });
   } catch (error) {
     console.error("Failed to make request:", error.message);
     res.render("index", {

@@ -9,16 +9,24 @@
     <title>Weather Pulse</title>
 </head>
 
-<body class>
-    <header class="padding-x py-8 absolute z-10 w-full">
+<body class="bg-primary-lgt dark:bg-primary-drk text-white">
+    <header class="px-5 py-4 absolute z-10 w-full bg-secondary-drk">
         <nav class="flex justify-between items-center max-container relative">
-            <a href="/">
-                <img src="img/logo.png" alt="Logo" />
-            </a>
-            <ul class="flex-1 flex justify-center items-center gap-16 max-lg:hidden">
-                <li>
-                    <a href="#home" class="font-body leading-normal text-lg text-slate-gray hover:text-icons-drk">Home</a>
-                </li> 
+            <% if(locals.city && locals.data) {%>
+            <ul class="flex justify-center items-center gap-1">
+                <li  class="w-6 h-6">
+                    <a href="/">
+                        <img src="img/logo.png" alt="Logo" />
+                    </a>
+                </li>
+                <li class="h-8">
+                    <a href="/" class="font-body leading-normal sm:text-lg text-xs text-slate-gray hover:text-icons-drk"><%=city.name%>, <%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
+                </li>
+                <li class="w-8 h-8">
+                    <img src="https://openweathermap.org/img/wn/<%= data.current.weather[0].icon %>@2x.png" alt="icon">
+                </li>
             </ul>
+            <% } %>
+
         </nav>
     </header>

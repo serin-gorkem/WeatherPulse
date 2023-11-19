@@ -1,15 +1,20 @@
 <%- include("partials/functions.ejs") %>
-    <!DOCTYPE html>
-    <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/style.css">
         <title>Weather Pulse</title>
     </head>
-
-    <body class="min-h-screen bg-[url('/img/sky-sunset.jpg')] bg-cover bg-center relative">
+    <% 
+        function ChangeBG() {
+            const backgrounds = ["/img/wp1.jpg","/img/wp2.jpg","/img/wp3.jpg"];
+            return backgrounds[Math.floor(Math.random() * backgrounds.length)];
+        }    
+        
+    %>
+    <body id="body" class="min-h-screen bg-[url('<%= ChangeBG() %>')]  bg-cover bg-center relative">
         <header class="px-4 py-4 z-10 w-full bg-transparent absolute">
             <nav class="flex gap-4  justify-start max-container relative mx-auto" aria-label="main">
                 <a href="/">
@@ -43,4 +48,31 @@
                 </form>
             </section>
         </main>
-        <%- include("partials/footer.ejs") %>
+        <footer
+            class="max-container flex flex-col justify-center items-center px-6 absolute bottom-0 left-1/2 transform -translate-x-1/2 ">
+            <section class="max-container max-w-xs flex justify-center items-center">
+                <p class="sm:text-base text-[8px] text-white whitespace-nowrap opacity-75">
+                    Empowering Your Day with Precise Weather Insights <%= new Date().getFullYear(); %>  Weather Pulse.
+                        All Rights Reserved.
+                </p>
+            </section>
+            <section class="max-container max-w-xs">
+                <nav class="p-2 opacity-75" aria-label="footer">
+                    <ul class="flex flex-row gap-2 justify-center items-center px-10">
+                        <li class="sm:text-base text-[9px] text-white whitespace-nowrap hover:opacity-25 cursor-pointer">Terms of
+                            Use</li>
+                        <div class="border-l-2 rounded-full h-4 border-white opacity-50"></div>
+                        <li class="sm:text-base text-[9px] text-white whitespace-nowrap hover:opacity-25 cursor-pointer">Privacy
+                            Policy</li>
+                        <div class="border-l-2 rounded-full h-4 border-white opacity-50 "></div>
+                        <li class="sm:text-base text-[9px] text-white whitespace-nowrap hover:opacity-25 cursor-pointer">Contact Us
+                        </li>
+                        <div class="border-l-2 rounded-full h-4 border-white opacity-50"></div>
+                        <li class="sm:text-base text-[9px] text-white whitespace-nowrap hover:opacity-25 cursor-pointer">Cookie
+                            Policy</li>
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+    </body>
+</html>
