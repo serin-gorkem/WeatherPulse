@@ -5,4 +5,125 @@
     <% if(locals.data) {%>
     <h1>The weather is <%= data.temp %> Celsius degree </h1>
     <% } %> -->
-</body>
+    <main>
+        <section class=" dark:bg-primary-drk bg-primary-lgt shadow-lg p-2 w-full">
+            <ul class="flex-row flex justify-evenly gap-16">
+                <li class="active-time">
+                    <a href="">Today</a> </li>
+                <li class="">
+                    <a href="">Hourly</a> </li>
+                <li class="">
+                    <a href="">Daily</a> </li>
+            </ul>
+        </section>
+        <section  class="max-container" >
+            <article class="h-64 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                    <figcaption class="font-title">Current Weather</figcaption>
+                    <p class="font-numbers font-normal">
+                        <%
+                            let currentDate = new Date();
+                            let am_pm = currentDate.toLocaleTimeString([], {hour: '2-digit',minute:'2-digit'});
+                        %>
+                        <%= am_pm %>
+                    </p>
+                </figure>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <div class="flex items-center justify-center gap-2 ">
+                        <div class="flex items-center justify-center w-24 h-24 py-4 px-2">
+                            <img src="/img/cloud.png" alt="weather-icon" class=" w-full h-full">
+                        </div>
+                        <div>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers font-semibold text-4xl">12°<span class="text-xl font-title">C</span></p>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span>9°C</span></p>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg"> Mostly Sunny</p>
+                    </figcaption>
+                    <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                        More Details
+                    </button>
+                </figure>
+            </article>
+            <article class="h-64 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                    <figcaption class="font-title">Today’s Weather Forcast</figcaption>
+                    <p class="font-numbers font-normal">
+                        <%
+                            let date = currentDate.toLocaleDateString([], {day: '2-digit',month:'2-digit'});
+                        %>
+                        <%= date %>
+                    </p>
+                </figure>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <div class="flex items-center justify-center gap-2 ">
+                        <div class="flex items-center justify-center w-24 h-24 py-4 px-2">
+                            <img src="/img/cloud.png" alt="weather-icon" class=" w-full h-full">
+                        </div>
+                        <div>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers font-semibold text-4xl">13°<span class="text-xl font-title">C</span></p>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span>10°C</span></p>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg"> Breezy this morning; sunshine</p>
+                    </figcaption>
+                    <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                        More Details
+                    </button>
+                </figure>
+            </article>
+            <article class="h-64 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                    <figcaption class="font-title">Tonight’s Weather Forcast</figcaption>
+                    <p class="font-numbers font-normal">
+                        <%= date %>
+                    </p>
+                </figure>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <div class="flex items-center justify-center gap-2 ">
+                        <div class="flex items-center justify-center w-24 h-24 py-4 px-2">
+                            <img src="/img/cloud.png" alt="weather-icon" class=" w-full h-full">
+                        </div>
+                        <div>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers font-semibold text-4xl">6°<span class="text-xl font-title">C</span></p>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span>6°C</span></p>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg"> Cloudy </p>
+                    </figcaption>
+                    <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                        More Details
+                    </button>
+                </figure>
+            </article>
+            <article class="h-64 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                    <figcaption class="font-title">Tomorrow’s Weather Forcast</figcaption>
+                    <p class="font-numbers font-normal">
+                        <%= date %>
+                    </p>
+                </figure>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <div class="flex items-center justify-center gap-2 ">
+                        <div class="flex items-center justify-center w-24 h-24 py-4 px-2">
+                            <img src="/img/cloud.png" alt="weather-icon" class=" w-full h-full">
+                        </div>
+                        <div>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers font-semibold text-4xl">6°<span class="text-xl font-title">C</span></p>
+                            <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span>9°C</span></p>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg"> Periods of Rain</p>
+                    </figcaption>
+                    <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                        More Details
+                    </button>
+                </figure>
+            </article>
+        </section>
+    </main>
+<%- include("partials/footer.ejs") %>

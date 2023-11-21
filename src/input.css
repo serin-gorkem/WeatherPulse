@@ -11,8 +11,8 @@
 
 @layer components {
     .max-container {
-        max-width: 1440px;
-        margin: 0 auto;
+        max-width: 900px;
+        margin: auto;
     }
 }
 
@@ -24,8 +24,13 @@
     .padding-x {
         @apply sm:px-16 px-8;
     }
-
     .padding-y {
         @apply sm:py-24 py-12;
+    }
+    .toggle-btn {
+        @apply  [&>div::before]:w-8 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:w-8 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent [&>div]:rotate-[360deg]
+    }
+    .active-time{
+        @apply underline underline-offset-8 dark:decoration-icons-drk decoration-icons-lgt;
     }
 }

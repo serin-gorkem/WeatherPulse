@@ -1,27 +1,28 @@
-<%- include("partials/functions.ejs") %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/style.css">
+        <script defer src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
         <title>Weather Pulse</title>
     </head>
-    <% 
+    <script>
         function ChangeBG() {
-            const backgrounds = ["/img/wp1.jpg","/img/wp2.jpg","/img/wp3.jpg"];
-            return backgrounds[Math.floor(Math.random() * backgrounds.length)];
-        }    
-        
-    %>
-    <body id="body" class="min-h-screen bg-[url('<%= ChangeBG() %>')]  bg-cover bg-center relative">
+            const backgrounds = ["img/wp1.jpg","/img/wp2.jpg","./img/wp3.jpg"];
+            const selectBG =backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            $("#body").addClass(`bg-[url('${selectBG}')]`);
+        }
+    </script>
+    <body id="body" class="min-h-screen bg-cover bg-center relative" onload="ChangeBG()">
         <header class="px-4 py-4 z-10 w-full bg-transparent absolute">
             <nav class="flex gap-4  justify-start max-container relative mx-auto" aria-label="main">
                 <a href="/">
                     <h1 class="text-white font-title font-semibold sm:text-lg text-sm">Weather Pulse</h1>
                 </a>
                 <a href="/" class="sm:w-10 sm:h-10 w-7 h-7">
-                    <img src="img/logo.png" alt="Logo" class="bg-center" />
+                    <img src="img/logo.png" alt="brand-logo" class="bg-center" />
                 </a>
             </nav>
         </header>
@@ -31,7 +32,7 @@
             <section
                 class="flex items-center justify-center h-full bg-transparent z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-container ">
                 <form method="post" id="submit-city-name" class="sm:w-3/5 w-5/6 relative">
-                    <button type="reset" class="absolute top-3 right-3 cursor-pointer">
+                    <button type="reset" class="absolute top-2.5 right-3 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                 d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6l-5.6 5.6Z" />
