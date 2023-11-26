@@ -10,7 +10,7 @@
     </head>
     <script>
         function ChangeBG() {
-            const backgrounds = ["img/wp1.jpg","/img/wp2.jpg","./img/wp3.jpg"];
+            const backgrounds = ["/img/wp1.jpg","/img/wp2.jpg","/img/wp3.jpg"];
             const selectBG =backgrounds[Math.floor(Math.random() * backgrounds.length)];
             $("#body").addClass(`bg-[url('${selectBG}')]`);
         }

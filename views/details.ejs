@@ -1,0 +1,221 @@
+<%- include("partials/header.ejs") %>
+<main class="max-container">
+    <section>
+        <article class="h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+            <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                <figcaption class="font-title">Day</figcaption>
+                <p class="font-numbers font-normal">
+                    <%
+                        let currentDate = new Date();
+                        let date = currentDate.toLocaleDateString([], {day: '2-digit',month:'2-digit'});
+                    %>
+                    <%= date %>
+                </p>
+            </figure>
+            <% if(locals.data) {%>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <figcaption class="flex flex-col items-center justify-center">
+                        <div class="flex items-center justify-center w-14 h-16">
+                            <img src="https://openweathermap.org/img/wn/<%= data.daily[0].weather[0].icon %>@2x.png" alt="weather-icon"
+                                class=" w-full h-full">
+                        </div>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers text-sm mb-2">
+                            <%= data.daily[0].temp.day.toFixed(0)%>°<span class="text-sm font-title">C</span>
+                        </p>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="sm:text-lg text-xs font-body font-medium">
+                            <%= data.daily[0].summary.charAt(0).toUpperCase()%><%= data.daily[0].summary.slice(1)%>
+                        </p>
+                    </figcaption>
+                    <article class="grid grid-cols-2 w-full h-full px-5 gap-1 ">
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Feels Like
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].feels_like.day%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Dew Point
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].dew_point%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Pressure
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].pressure%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Wind Speed
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].wind_speed%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Humidity
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].humidity%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Wind Gust
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].wind_gust%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Max UV Index
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].uvi%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Clouds
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].clouds%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+                        </figure>
+                    </article>
+                </figure>
+                <% } %>
+        </article>
+        <article class="h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+            <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                <figcaption class="font-title">Night</figcaption>
+                <p class="font-numbers font-normal">
+                    <%= date %>
+                </p>
+            </figure>
+            <% if(locals.data) {%>
+                <figure class="flex flex-col justify-center items-center gap-3">
+                    <figcaption class="flex flex-col items-center justify-center">
+                        <div class="flex items-center justify-center w-14 h-16">
+                            <img src="https://openweathermap.org/img/wn/<%= data.hourly[12].weather[0].icon %>@2x.png" alt="weather-icon"
+                                class=" w-full h-full">
+                        </div>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="font-numbers text-sm mb-2">
+                            <%= data.daily[0].temp.night.toFixed(0)%>°<span class="text-sm font-title">C</span>
+                        </p>
+                        <p style="text-shadow: 0px 4px 4px #00000040;" class="sm:text-lg text-xs font-body font-medium">
+                            <%= data.daily[0].summary.charAt(0).toUpperCase()%><%= data.daily[0].summary.slice(1)%>
+                        </p>
+                    </figcaption>
+                    <article class="grid grid-cols-2 w-full h-full px-5 gap-1 ">
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Feels Like
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].feels_like.night%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Dew Point
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].dew_point%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Pressure
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].pressure%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Wind Speed
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].wind_speed%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Humidity
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].humidity%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Wind Gust
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].wind_gust%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Max UV Index
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].uvi%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+
+                        </figure>
+                        <figure class="flex justify-between items-center gap-2 p-1 text-xs relative">
+                            <figcaption>
+                                Clouds
+                            </figcaption>
+                            <div>
+                                <%= data.daily[0].clouds%>
+                            </div>
+                            <hr class="absolute w-[95%] bottom-0 border-gray-600 left-1 ">
+                        </figure>
+                    </article>
+                </figure>
+                <% } %>
+        </article>
+        
+    </section>
+</main>
+
+
+<%- include("partials/footer.ejs") %>
