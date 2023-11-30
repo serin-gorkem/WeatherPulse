@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
-    <script defer src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>Weather Pulse</title>
 </head>
 <script>
@@ -14,8 +12,18 @@
         $("#mobile-menu").toggleClass("hidden");
         $("#mobile-menu").toggleClass("flex");
     }
+    function changeUnit(){
+        const unitSelect = $('#userUnit option:selected').val();
+        $.ajax({
+            url:"units",
+            data:{userSelect: unitSelect} ,
+            type:"post",
+            success: function(result) {
+                location.reload()
+            }
+        })
+    }
 </script>
-
 <body class="bg-primary-lgt dark:bg-primary-drk dark:text-white text-black font-semibold ">
     <header class="px-5 py-4  z-10 dark:bg-secondary-drk bg-secondary-lgt">
         <section class="max-container">
@@ -28,27 +36,13 @@
                         </a>
                     </li>
                     <li class="h-8 flex justify-center items-center">
-                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk"><%=city.name%>, <%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
+                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk"><%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
                     </li>
                     <li class="flex justify-center items-center">
                         <img src="https://openweathermap.org/img/wn/<%= data.current.weather[0].icon %>@2x.png" alt="weather-icon" class="w-6 h-6">
                     </li>
                 </ul>
-                <% }else {%>
-                    <ul class="flex justify-center items-center gap-1">
-                        <li  class="w-6 h-6 flex justify-center items-center">
-                            <a href="/">
-                                <img src="img/logo.png" alt="brand-logo" />
-                            </a>
-                        </li>
-                        <li class="h-8 flex justify-center items-center">
-                            <a href="/" class="font-body leading-normal sm:text-lg text-s text-slate-gray hover:text-icons-drk">London, London 12°</a>
-                        </li>
-                        <li class="w-6 h-8 flex justify-center items-center p-1">
-                            <img src="img/cloud.png" alt="weather-icon" >
-                        </li>
-                    </ul>
-                    <% } %>
+                <% } %>
                 <button id="hamburger-button" class="relative h-8 w-8 px-4 cursor-pointer text-3xl  flex justify-center items-center" onclick="toggleMenu()">
                     <div
                         class="absolute top-4 -mt-0.5 h-[3px] w-8 rounded bg-black dark:bg-white transition-all duration-500 before:absolute before:h-[3px] before:w-6 before:-translate-x-4 before:-translate-y-2 before:rounded before:bg-black before:dark:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-[3px] after:w-7 after:-translate-x-4 after:translate-y-2 after:rounded after:bg-black after:dark:bg-white after:transition-all after:duration-500 after:content-['']">
@@ -57,7 +51,7 @@
             </nav>
         </section>
         <%# Mobile Menu %>
-        <section id="mobile-menu" class="absolute top-0 left-0 w-screen flex-col items-center pb-8 bg-secondary-lgt dark:bg-secondary-drk hidden ">
+        <section id="mobile-menu" class="absolute top-0 left-0 w-screen flex-col items-center pb-8 z-10 bg-secondary-lgt dark:bg-secondary-drk hidden ">
             <article class="p-4 w-full flex justify-between relative" aria-label="mobile">
                 <div class="flex justify-center items-center gap-2">
                     <a href="/">
@@ -97,32 +91,10 @@
                         <p class="w-5/6 font-body text-2xs font-semibold text-black dark:text-white">
                             <%= city.name%> , <%= city.name%> <%= data.current.temp.toFixed(0)%>°C
                         </p>
-                        <% } else{%>
-                            <p class="w-5/6 font-body text-2xs font-semibold text-black dark:text-white">
-                                London, London 12°
-                            </p>
-                            <% } %>
+                        <% } %>
             </article>
             <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4">
             <article class="px-8 py-4 w-5/6 dark:bg-secondary-drk bg-secondary-lgt shadow-md flex flex-col gap-6" aria-label="options">
-                <figure class="sm:text-lg">
-                    <figcaption> 
-                        <a href="">Today</a>
-                    </figcaption>
-                    <hr class="mt-2 dark:border-primary-drk border-primary-lgt">
-                </figure>
-                <figure class="sm:text-lg"> 
-                    <figcaption> 
-                        <a href="">Hourly</a>
-                    </figcaption>
-                    <hr class="mt-2 dark:border-primary-drk border-primary-lgt">
-                </figure>
-                <figure class="sm:text-lg"> 
-                    <figcaption> 
-                        <a href="">Daily</a>
-                    </figcaption>
-                    <hr class="mt-2 dark:border-primary-drk border-primary-lgt">
-                </figure>
                 <figure class="flex justify-between flex-row items-center"> 
                     <figcaption> 
                         <a href="">Language</a>
@@ -140,10 +112,13 @@
                     <figcaption> 
                         <a href="">Units</a>
                     </figcaption>
-                    <select class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs">
-                        <option value="US" class="bg-primary-drk "> Standard (K)</option>
-                        <option value="DE" class="bg-primary-drk"> Metric (°C, km/h, mm)</option>
-                        <option value="FR" class="bg-primary-drk"> Imperial (°F, Mph, In)</option>
+                    <select id="userUnit" class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs" onchange="changeUnit()">
+                        <% if(locals.units) {%>
+                        <option value="standard" class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
+                        <% } %>
+                        <option value="standard" class="bg-primary-drk" > Standard (K)</option>
+                        <option value="metric" class="bg-primary-drk"> Metric (°C, km/h, mm)</option>
+                        <option value="imperial" class="bg-primary-drk"> Imperial (°F, Mph, In)</option>
                     </select>
                 </figure>
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">
