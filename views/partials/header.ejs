@@ -115,28 +115,29 @@
                 </figure>
                 <figure class="flex justify-between flex-row items-center"> 
                     <figcaption> 
-                        <a href="">Language</a>
+                        <a href=""><%= language.nav_language %></a>
                     </figcaption>
                     <select id="userLang" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs" onchange="changePreference()">
-                        <option value="us" class="bg-primary-drk" selected> English US</option>
-                        <option value="de" class="bg-primary-drk"> German</option>
-                        <option value="fr" class="bg-primary-drk"> French</option>
-                        <option value="tr" class="bg-primary-drk"> Turkish</option>
-                        <option value="ja" class="bg-primary-drk"> Japanese</option>
+                        <option class="bg-primary-drk" selected><%= language.nav_language_EN %></option>
+                        <option value="en" class="bg-primary-drk"><%= language.nav_language_EN %></option>
+                        <option value="de" class="bg-primary-drk"> <%= language.nav_language_DE %></option>
+                        <option value="fr" class="bg-primary-drk"> <%= language.nav_language_FR %></option>
+                        <option value="tr" class="bg-primary-drk"> <%= language.nav_language_TR %></option>
+                        <option value="ja" class="bg-primary-drk"> <%= language.nav_language_JA %></option>
                     </select>
                 </figure>
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">
                 <figure class="flex justify-between flex-row items-center sm:text-lg "> 
                     <figcaption> 
-                        <a href="">Units</a>
+                        <a href=""><%= language.nav_units %></a>
                     </figcaption>
                     <select id="userUnit" class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs" onchange="changePreference()">
                         <% if(locals.units) {%>
-                        <option value="standard" class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
+                        <option class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
                         <% } %>
-                        <option value="standard" class="bg-primary-drk" > Standard (K)</option>
-                        <option value="metric" class="bg-primary-drk"> Metric (°C, km/h, mm)</option>
-                        <option value="imperial" class="bg-primary-drk"> Imperial (°F, Mph, In)</option>
+                        <option value="standard" class="bg-primary-drk" > <%=language.nav_units_standard%>(K)</option>
+                        <option value="metric" class="bg-primary-drk"> <%=language.nav_units_metric%> (°C, km/h, mm)</option>
+                        <option value="imperial" class="bg-primary-drk"> <%=language.nav_units_imperial%> (°F, Mph, In)</option>
                     </select>
                 </figure>
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">

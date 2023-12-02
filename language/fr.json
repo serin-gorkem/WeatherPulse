@@ -1,17 +1,19 @@
 {
+    "language_name":"fr"
+    ,
     "input_placeholder": "Recherche",
     
     "nav_home" : "Accueil",
     "nav_language": "Langue",
-    "nav_language_EU": "Anglais",
+    "nav_language_EN": "Anglais",
     "nav_language_DE": "Allemand",
     "nav_language_FR": "Français",
     "nav_language_TR": "Turc",
-    "nav_language_JP": "Japonais",
+    "nav_language_JA": "Japonais",
     "nav_units": "Unités",
-    "nav_metric": "Métrique",
-    "nav_standard": "Standard",
-    "nav_imperial": "Impérial",
+    "nav_units_metric": "Métrique",
+    "nav_units_standard": "Standard",
+    "nav_units_imperial": "Impérial",
 
     "current_weather": "Météo actuelle",
     "todays_weather_forecast": "Prévisions météo pour aujourd'hui",
@@ -37,11 +39,7 @@
     "details_wind_speed": "Vitesse du vent",
     "details_wind_gust": "Rafales de vent",
     "details_clouds": "Nuages",
-    "details_celsius": "°C",
-    "details_kelvin": "K",
-    "details_fahrenheit": "°F",
-    "details_km_h": "km/h",
-    "details_mph": "mph",
+
     "details_sun": "Lever / Coucher de soleil",
     "details_moon": "Lever / Coucher de lune",
     "details_rise": "Lever",
