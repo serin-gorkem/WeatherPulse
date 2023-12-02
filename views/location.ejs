@@ -67,9 +67,11 @@
                                 <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span><%= data.daily[0].feels_like.day.toFixed(0)%>°C</span></p>
                             </div>
                         </div>
-                        <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
-                            More Details
-                        </button>
+                        <form method="post">
+                            <button formaction="/details" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                                More Details
+                            </button>
+                        </form>
                     </figure>
                     <% } %>
             </article>
@@ -79,7 +81,7 @@
                     <p class="font-numbers font-normal">
                         <% 
                             let currentHour = currentDate.getHours();
-                            const tonight = 24 - currentHour;
+                            const tonight =Math.abs(24 - currentHour);
                         %>
                         <%= date %>
                     </p>
@@ -98,9 +100,11 @@
                                 <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal">Feels Like <span><%= data.daily[0].feels_like.night.toFixed(0)%>°C</span></p>
                             </div>
                         </div>
-                        <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
-                            More Details
-                        </button>
+                        <form method="post">
+                            <button formaction="/details" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                                More Details
+                            </button>
+                        </form>
                     </figure>
                     <% } %>
             </article>
@@ -125,9 +129,11 @@
                                 <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm  font-body font-normal pl-2">Feels Like <span><%= data.daily[1].feels_like.day.toFixed(0)%>°C</span></p>
                             </div>
                         </div>
-                        <button style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
-                            More Details
-                        </button>
+                        <form method="post">
+                            <button formaction="/tomorrow" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg">
+                                More Details
+                            </button>
+                        </form>
                     </figure>
                     <% } %>
             </article>
