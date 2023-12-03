@@ -1,5 +1,5 @@
 {
     "unit_name":"metric",
-    "unit_degree": "°C",
+    "unit_degree": "C",
     "unit_speed" : "km/h"
 }

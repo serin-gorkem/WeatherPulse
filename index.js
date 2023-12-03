@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import "dotenv/config";
-import { options } from "prettier-plugin-tailwindcss";
 import fs from "fs";
 
 //JSON Files
@@ -34,6 +33,9 @@ let weatherData;
 let unitsJSON = metricJSON;
 let langJSON = enJSON;
 
+/**
+ * Date values
+ */
 let currentDate = new Date();
 let date = currentDate.toLocaleDateString([], {day: '2-digit',month:'2-digit'});
 let currentHour = currentDate.getHours();
@@ -86,7 +88,6 @@ app.post("/pref", async (req,res) => {
   if(path === null){
     path = "location";
   }
-  // console.log(units);
   // console.log("Current path : " + path);
   /*Try and do a new request */
   switch (langJSON.language_name) {
@@ -108,7 +109,6 @@ app.post("/pref", async (req,res) => {
     default:
       break;
   } 
-  //console.log("Server : "+ lang.footer_text);
   switch (unitsJSON.unit_name) {
     case "imperial":
       unitsJSON = imperialJSON;
@@ -122,6 +122,7 @@ app.post("/pref", async (req,res) => {
     default:
       break;
   }
+  console.log("Server Language: "+ langJSON.language_name);
   cityLoc = await axios.get(API_CITY_URL + `q=${cityLoc.data[0].name}&limit=5&appid=${API_KEY}`);
   const latitude = cityLoc.data[0].lat;
   const longitude = cityLoc.data[0].lon;

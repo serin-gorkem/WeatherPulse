@@ -12,14 +12,28 @@
         $("#mobile-menu").toggleClass("hidden");
         $("#mobile-menu").toggleClass("flex");
     }
-    function changePreference(){
+    function changeUnit(){
         const userUnit = $('#userUnit option:selected').val();
-        const userLang = $('#userLang option:selected').val();
+        console.log("Client Language" + userLang);
         var fileName = window.location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
         $.ajax({
             url:"pref",
             data:{
                 userUnit: userUnit,
+                page: fileName,
+            } ,
+            type:"post",
+            success: function(result) {
+                location.reload();
+            }
+        })
+    }
+    function changeLanguage(params) {
+        const userLang = $('#userLang option:selected').val();
+        var fileName = window.location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        $.ajax({
+            url:"pref",
+            data:{
                 userLang: userLang,
                 page: fileName,
             } ,
@@ -28,6 +42,12 @@
                 location.reload();
             }
         })
+    }
+    function changeSelected() {
+        const options = document.querySelectorAll(".lang-opt");
+        options.forEach(option => {
+            
+        });
     }
     
 </script>
@@ -117,13 +137,13 @@
                     <figcaption> 
                         <a href=""><%= language.nav_language %></a>
                     </figcaption>
-                    <select id="userLang" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs" onchange="changePreference()">
-                        <option class="bg-primary-drk" selected><%= language.nav_language_EN %></option>
-                        <option value="en" class="bg-primary-drk"><%= language.nav_language_EN %></option>
-                        <option value="de" class="bg-primary-drk"> <%= language.nav_language_DE %></option>
-                        <option value="fr" class="bg-primary-drk"> <%= language.nav_language_FR %></option>
-                        <option value="tr" class="bg-primary-drk"> <%= language.nav_language_TR %></option>
-                        <option value="ja" class="bg-primary-drk"> <%= language.nav_language_JA %></option>
+                    <select id="userLang" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs" onchange="changeLanguage()">
+                        <option value="" class="bg-primary-drk lang-opt " selected><%= language.nav_language_EN %></option>
+                        <option value="en" class="bg-primary-drk lang-opt"> <%= language.nav_language_EN %></option>
+                        <option value="de" class="bg-primary-drk lang-opt"> <%= language.nav_language_DE %></option>
+                        <option value="fr" class="bg-primary-drk lang-opt"> <%= language.nav_language_FR %></option>
+                        <option value="tr" class="bg-primary-drk lang-opt"> <%= language.nav_language_TR %></option>
+                        <option value="ja" class="bg-primary-drk lang-opt"> <%= language.nav_language_JA %></option>
                     </select>
                 </figure>
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">
@@ -131,11 +151,11 @@
                     <figcaption> 
                         <a href=""><%= language.nav_units %></a>
                     </figcaption>
-                    <select id="userUnit" class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs" onchange="changePreference()">
+                    <select id="userUnit" class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs" onchange="changeUnit()">
                         <% if(locals.units) {%>
-                        <option class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
+                        <option value="" class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
                         <% } %>
-                        <option value="standard" class="bg-primary-drk" > <%=language.nav_units_standard%>(K)</option>
+                        <option value="standard" class="bg-primary-drk" onclick="changeSelected()"> <%=language.nav_units_standard%> (K)</option>
                         <option value="metric" class="bg-primary-drk"> <%=language.nav_units_metric%> (°C, km/h, mm)</option>
                         <option value="imperial" class="bg-primary-drk"> <%=language.nav_units_imperial%> (°F, Mph, In)</option>
                     </select>
