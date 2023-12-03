@@ -1,22 +1,27 @@
+<% if(locals.language) {%>
 <footer class="max-container flex flex-col justify-center items-center px-6">
-    <section class="max-container max-w-xs flex justify-center items-center">
-        <p class="sm:text-base text-[8px] whitespace-nowrap opacity-75">
-            Empowering Your Day with Precise Weather Insights -<%= new Date().getFullYear(); %> -  Weather Pulse. All Rights Reserved.
+    <section class="max-container max-w-xs flex flex-col justify-center items-center">
+        <p class="sm:text-base text-[10px] whitespace-nowrap opacity-75">
+           <%= language.footer_text %>
+        </p>
+        <p class="sm:text-base text-[10px] whitespace-nowrap opacity-75">
+            <%= new Date().getFullYear(); %> Weather Pulse. <%= language.footer_rights %>
         </p>
     </section>
     <section class="max-container max-w-xs">
         <nav class="p-2 opacity-75" aria-label="footer">
             <ul class="flex flex-row gap-2 justify-center items-center px-10">
-                <li class="sm:text-base text-[9px] whitespace-nowrap hover:opacity-25 cursor-pointer">Terms of Use</li>
-                <div class="border-l-2 rounded-full h-4 border-black opacity-50"></div>
-                <li class="sm:text-base text-[9px] whitespace-nowrap hover:opacity-25 cursor-pointer">Privacy Policy</li>
-                <div class="border-l-2 rounded-full h-4 border-black opacity-50 "></div>
-                <li class="sm:text-base text-[9px] whitespace-nowrap hover:opacity-25 cursor-pointer">Contact Us</li>
-                <div class="border-l-2 rounded-full h-4 border-black opacity-50"></div>
-                <li class="sm:text-base text-[9px] whitespace-nowrap hover:opacity-25 cursor-pointer">Cookie Policy</li>
+                <li class="sm:text-base text-[7px] whitespace-nowrap hover:opacity-25 cursor-pointer"><%= language.footer_terms %></li>
+                <div class="border-l-2 rounded-full h-3 dark:border-icons-drk border-icons-lgt "></div>
+                <li class="sm:text-base text-[7px] whitespace-nowrap hover:opacity-25 cursor-pointer"><%= language.footer_privacy %></li>
+                <div class="border-l-2 rounded-full h-3 dark:border-icons-drk border-icons-lgt  "></div>
+                <li class="sm:text-base text-[7px] whitespace-nowrap hover:opacity-25 cursor-pointer"><%= language.footer_contact %></li>
+                <div class="border-l-2 rounded-full h-3 dark:border-icons-drk border-icons-lgt "></div>
+                <li class="sm:text-base text-[7px] whitespace-nowrap hover:opacity-25 cursor-pointer"><%= language.footer_cookie %></li>
             </ul>
         </nav>
     </section>
 </footer>
+<% } %>
 </body>
 </html>

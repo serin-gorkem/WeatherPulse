@@ -1,16 +1,18 @@
 {
-    "language_name":"tr",
-
+    "language_name": "tr",
+    
     "input_placeholder": "Arama",
     
     "nav_home" : "Ana Sayfa",
     "nav_language": "Dil",
+    "nav_language_select": "Bir Dil Seçin",
     "nav_language_EN": "İngilizce",
     "nav_language_DE": "Almanca",
     "nav_language_FR": "Fransızca",
     "nav_language_TR": "Türkçe",
     "nav_language_JA": "Japonca",
     "nav_units": "Birimler",
+    "nav_units_unit_select":"Birim Seçiniz",
     "nav_units_metric": "Metrik",
     "nav_units_standard": "Standart",
     "nav_units_imperial": "Emperyal",
@@ -46,3 +48,4 @@
     "details_hr": "sa",
     "details_min": "dk"
 }
+

@@ -1,16 +1,18 @@
 {
-    "language_name":"de",
-
+    "language_name": "de",
+    
     "input_placeholder": "Suche",
     
     "nav_home" : "Startseite",
     "nav_language": "Sprache",
+    "nav_language_select": "Wählen Sie eine Sprache",
     "nav_language_EN": "Englisch",
     "nav_language_DE": "Deutsch",
     "nav_language_FR": "Französisch",
     "nav_language_TR": "Türkisch",
     "nav_language_JA": "Japanisch",
     "nav_units": "Einheiten",
+    "nav_units_unit_select": "Wählen Sie eine Einheit",
     "nav_units_metric": "Metrisch",
     "nav_units_standard": "Standard",
     "nav_units_imperial": "Imperial",
@@ -39,7 +41,7 @@
     "details_wind_speed": "Windgeschwindigkeit",
     "details_wind_gust": "Windböen",
     "details_clouds": "Wolken",
-
+    
     "details_sun": "Sonnenaufgang / Sonnenuntergang",
     "details_moon": "Mondaufgang / Monduntergang",
     "details_rise": "Aufgang",

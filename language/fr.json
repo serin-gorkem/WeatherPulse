@@ -1,16 +1,18 @@
 {
-    "language_name":"fr"
-    ,
+    "language_name": "fr",
+    
     "input_placeholder": "Recherche",
     
     "nav_home" : "Accueil",
     "nav_language": "Langue",
+    "nav_language_select": "Sélectionnez une langue",
     "nav_language_EN": "Anglais",
     "nav_language_DE": "Allemand",
     "nav_language_FR": "Français",
     "nav_language_TR": "Turc",
     "nav_language_JA": "Japonais",
     "nav_units": "Unités",
+    "nav_units_unit_select": "Sélectionnez une unité",
     "nav_units_metric": "Métrique",
     "nav_units_standard": "Standard",
     "nav_units_imperial": "Impérial",

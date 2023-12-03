@@ -8,13 +8,6 @@
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
         <title>Weather Pulse</title>
     </head>
-    <script>
-        function ChangeBG() {
-            const backgrounds = ["/img/wp1.jpg","/img/wp2.jpg","/img/wp3.jpg"];
-            const selectBG =backgrounds[Math.floor(Math.random() * backgrounds.length)];
-            $("#body").addClass(`bg-[url('${selectBG}')]`);
-        }
-    </script>
     <body id="body" class="min-h-screen bg-cover bg-center relative bg-[url('/img/wp1.jpg')]">
         <header class="px-4 py-4 z-10 w-full bg-transparent absolute">
             <nav class="flex gap-4  justify-start max-container relative mx-auto" aria-label="main">
@@ -49,8 +42,7 @@
                 </form>
             </section>
         </main>
-        <footer
-            class="max-container flex flex-col justify-center items-center px-6 absolute bottom-0 left-1/2 transform -translate-x-1/2 ">
+        <footer class="max-container flex flex-col justify-center items-center px-6 absolute bottom-0 left-1/2 transform -translate-x-1/2 ">
             <section class="max-container max-w-xs flex justify-center items-center">
                 <p class="sm:text-base text-[8px] text-white whitespace-nowrap opacity-75">
                     Empowering Your Day with Precise Weather Insights <%= new Date().getFullYear(); %>  Weather Pulse.

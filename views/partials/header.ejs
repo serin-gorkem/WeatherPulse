@@ -14,8 +14,8 @@
     }
     function changeUnit(){
         const userUnit = $('#userUnit option:selected').val();
-        console.log("Client Language" + userLang);
         var fileName = window.location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+        console.log("Client Unit: "+userUnit);
         $.ajax({
             url:"pref",
             data:{
@@ -43,16 +43,9 @@
             }
         })
     }
-    function changeSelected() {
-        const options = document.querySelectorAll(".lang-opt");
-        options.forEach(option => {
-            
-        });
-    }
-    
 </script>
 <body class="bg-primary-lgt dark:bg-primary-drk dark:text-white text-black font-semibold ">
-    <header class="px-5 py-4  z-10 dark:bg-secondary-drk bg-secondary-lgt">
+    <header class="px-5 py-4 z-10 dark:bg-secondary-drk bg-secondary-lgt">
         <% if(locals.language) {%>
         <section class="max-container">
             <nav class="flex justify-between items-center relative" aria-label="main">
@@ -64,26 +57,26 @@
                         </a>
                     </li>
                     <li class="h-8 flex justify-center items-center">
-                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk"><%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
+                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk text-primary-lgt dark:text-white"><%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
                     </li>
                     <li class="flex justify-center items-center">
                         <img src="https://openweathermap.org/img/wn/<%= data.current.weather[0].icon %>@2x.png" alt="weather-icon" class="w-6 h-6">
                     </li>
                 </ul>
                 <% } %>
-                <button id="hamburger-button" class="relative h-8 w-8 px-4 cursor-pointer text-3xl  flex justify-center items-center" onclick="toggleMenu()">
+                <button id="hamburger-button" class="relative h-8 w-8 px-4 cursor-pointer text-3xl flex justify-center items-center" onclick="toggleMenu()">
                     <div
-                        class="absolute top-4 -mt-0.5 h-[3px] w-8 rounded bg-black dark:bg-white transition-all duration-500 before:absolute before:h-[3px] before:w-6 before:-translate-x-4 before:-translate-y-2 before:rounded before:bg-black before:dark:bg-white before:transition-all before:duration-500 before:content-[''] after:absolute after:h-[3px] after:w-7 after:-translate-x-4 after:translate-y-2 after:rounded after:bg-black after:dark:bg-white after:transition-all after:duration-500 after:content-['']">
+                        class="absolute top-4 -mt-0.5 h-[3px] w-8 rounded bg-primary-lgt transition-all duration-500 before:absolute before:h-[3px] before:w-6 before:-translate-x-4 before:-translate-y-2 before:rounded before:bg-primary-lgt before:transition-all before:duration-500 before:content-[''] after:absolute after:h-[3px] after:w-7 after:-translate-x-4 after:translate-y-2 after:rounded after:bg-primary-lgt after:transition-all after:duration-500 after:content-['']">
                     </div>
                 </button>
             </nav>
         </section>
         <%# Mobile Menu %>
-        <section id="mobile-menu" class="absolute top-0 left-0 w-screen flex-col items-center pb-8 z-10 bg-secondary-lgt dark:bg-secondary-drk hidden ">
+        <section id="mobile-menu" class="fixed top-0 left-0 w-screen flex-col items-center pb-8 z-10 bg-secondary-lgt dark:bg-secondary-drk hidden ">
             <article class="p-4 w-full flex justify-between relative" aria-label="mobile">
                 <div class="flex justify-center items-center gap-2">
                     <a href="/">
-                        <h1 class="text-black dark:text-white font-title font-semibold sm:text-lg text-sm">Weather Pulse</h1>
+                        <h1 class=" font-title font-semibold sm:text-lg text-sm text-primary-lgt">Weather Pulse</h1>
                     </a>
                     <a href="/" class="sm:w-10 sm:h-10">
                         <img src="img/logo.png" alt="brand-logo" class="bg-center w-7 h-7" />
@@ -92,7 +85,7 @@
                 <button id="close-button"
                     class="relative h-8 w-8 px-4 cursor-pointer text-3xl flex justify-center items-center" onclick="toggleMenu()">
                     <div
-                        class="before:absolute before:h-[3px] before:w-8 before:-translate-x-4 before:-translate-y-0 before:rounded before:bg-black before:dark:bg-white before:content-[''] before:rotate-45 after:absolute after:h-[3px] after:w-8 after:-translate-x-4 after:translate-y-0 after:rounded after:bg-black after:dark:bg-white after:content-[''] after:-rotate-45">
+                        class="before:absolute before:h-[3px] before:w-8 before:-translate-x-4 before:-translate-y-0 before:rounded before:bg-primary-lgt before:content-[''] before:rotate-45 after:absolute after:h-[3px] after:w-8 after:-translate-x-4 after:translate-y-0 after:rounded after:bg-primary-lgt after:content-[''] after:-rotate-45">
                     </div>
                 </button>
             </article>
@@ -116,7 +109,7 @@
                         </button>
                     </form>
                     <% if(locals.city && locals.data) {%>
-                        <p class="w-5/6 font-body text-2xs font-semibold text-black dark:text-white">
+                        <p class="w-5/6 font-body text-2xs font-semibold text-primary-lgt">
                             <%= city.name%> , <%= city.name%> <%= data.current.temp.toFixed(0)%>°C
                         </p>
                         <% } %>
@@ -126,38 +119,39 @@
                 <figure class="sm:text-lg">
                     <figcaption> 
                         <form method="post">
-                            <button formaction="/location" type="submit">
+                            <button formaction="location" type="submit" class="text-primary-lgt">
                                 <%= language.nav_home %>
                             </button>
                         </form>
                     </figcaption>
                     <hr class="mt-2 dark:border-primary-drk border-primary-lgt">
                 </figure>
-                <figure class="flex justify-between flex-row items-center"> 
-                    <figcaption> 
-                        <a href=""><%= language.nav_language %></a>
+
+                <figure class="flex justify-between flex-row items-center sm:text-lg"> 
+                    <figcaption class="text-primary-lgt"> 
+                        <%= language.nav_language %>
                     </figcaption>
-                    <select id="userLang" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs" onchange="changeLanguage()">
-                        <option value="" class="bg-primary-drk lang-opt " selected><%= language.nav_language_EN %></option>
-                        <option value="en" class="bg-primary-drk lang-opt"> <%= language.nav_language_EN %></option>
-                        <option value="de" class="bg-primary-drk lang-opt"> <%= language.nav_language_DE %></option>
-                        <option value="fr" class="bg-primary-drk lang-opt"> <%= language.nav_language_FR %></option>
-                        <option value="tr" class="bg-primary-drk lang-opt"> <%= language.nav_language_TR %></option>
-                        <option value="ja" class="bg-primary-drk lang-opt"> <%= language.nav_language_JA %></option>
+                    <select id="userLang" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs text-primary-lgt" onchange="changeLanguage()">
+                        <option value="" class="dark:bg-primary-drk bg-secondary-lgt" selected><%= language.nav_language_select%></option>
+                        <option value="en" class="dark:bg-primary-drk bg-secondary-lgt"> <%= language.nav_language_EN %></option>
+                        <option value="de" class="dark:bg-primary-drk bg-secondary-lgt"> <%= language.nav_language_DE %></option>
+                        <option value="fr" class="dark:bg-primary-drk bg-secondary-lgt"> <%= language.nav_language_FR %></option>
+                        <option value="tr" class="dark:bg-primary-drk bg-secondary-lgt"> <%= language.nav_language_TR %></option>
+                        <option value="ja" class="dark:bg-primary-drk bg-secondary-lgt"> <%= language.nav_language_JA %></option>
                     </select>
                 </figure>
+
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">
+
                 <figure class="flex justify-between flex-row items-center sm:text-lg "> 
-                    <figcaption> 
-                        <a href=""><%= language.nav_units %></a>
+                    <figcaption class="text-primary-lgt"> 
+                        <%= language.nav_units %>
                     </figcaption>
-                    <select id="userUnit" class="bg-transparent p-2 sm:w-36 w-[105px] sm:text-lg text-xs" onchange="changeUnit()">
-                        <% if(locals.units) {%>
-                        <option value="" class="bg-primary-drk" selected> <%= units.charAt(0).toUpperCase() %><%= units.slice(1)%></option>
-                        <% } %>
-                        <option value="standard" class="bg-primary-drk" onclick="changeSelected()"> <%=language.nav_units_standard%> (K)</option>
-                        <option value="metric" class="bg-primary-drk"> <%=language.nav_units_metric%> (°C, km/h, mm)</option>
-                        <option value="imperial" class="bg-primary-drk"> <%=language.nav_units_imperial%> (°F, Mph, In)</option>
+                    <select id="userUnit" class="bg-transparent p-2 font-body font-medium sm:text-lg text-xs text-primary-lgt"  onchange="changeUnit()">
+                        <option value="" class="dark:bg-primary-drk bg-secondary-lgt" selected><%= language.nav_units_unit_select%></option>
+                        <option value="standard" class="dark:bg-primary-drk bg-secondary-lgt"" > <%=language.nav_units_standard%> (K)</option>
+                        <option value="metric" class="dark:bg-primary-drk bg-secondary-lgt""> <%=language.nav_units_metric%> (°C, km/h)</option>
+                        <option value="imperial" class="dark:bg-primary-drk bg-secondary-lgt""> <%=language.nav_units_imperial%> (°F, Mph)</option>
                     </select>
                 </figure>
                 <hr class="-mt-5 dark:border-primary-drk border-primary-lgt">

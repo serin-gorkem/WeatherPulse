@@ -1,16 +1,18 @@
 {
-    "language_name":"ja",
+    "language_name": "ja",
     
     "input_placeholder": "検索",
     
     "nav_home" : "ホーム",
     "nav_language": "言語",
+    "nav_language_select": "言語を選択",
     "nav_language_EN": "英語",
     "nav_language_DE": "ドイツ語",
     "nav_language_FR": "フランス語",
     "nav_language_TR": "トルコ語",
     "nav_language_JA": "日本語",
     "nav_units": "単位",
+    "nav_units_unit_select": "単位を選択",
     "nav_units_metric": "メトリック",
     "nav_units_standard": "標準",
     "nav_units_imperial": "帝国",
@@ -39,7 +41,6 @@
     "details_wind_speed": "風速",
     "details_wind_gust": "突風",
     "details_clouds": "雲",
-
     "details_sun": "日の出 / 日没",
     "details_moon": "月の出 / 月の入り",
     "details_rise": "昇る",

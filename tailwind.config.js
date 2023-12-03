@@ -15,8 +15,9 @@ module.exports = {
         "2xs":['10px'],
       },
       colors :{
-        'primary-lgt': "#FFF2D8",
-        'secondary-lgt': "#EAD7BB",
+        'primary-lgt': "#FEFAE0",
+        'secondary-lgt': "#B99470",
+        'lgt':"#776B5D",
         'primary-drk': "#041C32",
         'secondary-drk': "#04293A",
         'icons-lgt':"#3F5781",
