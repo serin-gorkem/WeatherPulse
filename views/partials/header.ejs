@@ -47,10 +47,9 @@
 </script>
 <body class="bg-primary-lgt dark:bg-primary-drk dark:text-white text-black font-semibold animate-fade-in">
     <header class="px-5 py-4 z-10 dark:bg-secondary-drk bg-secondary-lgt">
-        <% if(locals.language) {%>
+        <% if(locals.language && locals.data_current && locals.city) {%>
         <section class="max-container">
             <nav class="flex sm:justify-around justify-between items-center relative " aria-label="main">
-                <% if(locals.city && locals.data) {%>
                 <ul class="flex justify-center items-center gap-1 ">
                     <li  class="w-6 h-6 flex justify-center items-center">
                         <a href="/">
@@ -58,13 +57,12 @@
                         </a>
                     </li>
                     <li class="h-8 flex justify-center items-center">
-                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk text-primary-lgt dark:text-white"><%=city.name%>, <%= data.current.temp.toFixed(0) %>°</a>
+                        <a href="/" class="font-body leading-normal sm:text-lg text-sm text-slate-gray hover:text-icons-drk text-primary-lgt dark:text-white"><%=city.name%>, <%= data_current.temp.toFixed(0) %>°</a>
                     </li>
                     <li class="flex justify-center items-center">
-                        <img src="https://openweathermap.org/img/wn/<%= data.current.weather[0].icon %>@2x.png" alt="weather-icon" class="w-6 h-6">
+                        <img src="https://openweathermap.org/img/wn/<%= data_current.weather[0].icon %>@2x.png" alt="weather-icon" class="w-6 h-6">
                     </li>
                 </ul>
-                <% } %>
                 <form action="location" method="post" id="submit-city-name" class="w-7/12 relative hidden sm:block">
                     <button type="reset" class="absolute top-2.5 right-3 cursor-pointer ">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -125,11 +123,9 @@
                             </svg>
                         </button>
                     </form>
-                    <% if(locals.city && locals.data) {%>
-                        <p class="w-5/6 font-body text-2xs font-semibold text-primary-lgt sm:hidden">
-                            <%= city.name%> , <%= city.name%> <%= data.current.temp.toFixed(0)%>°C
-                        </p>
-                        <% } %>
+                    <p class="w-5/6 font-body text-2xs font-semibold text-primary-lgt sm:hidden">
+                        <%= city.name%> , <%= city.name%> <%= data_current.temp.toFixed(0)%>°C
+                    </p>
             </article>
             <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4 sm:hidden">
             <article class="px-8 sm:px-3 py-4 w-5/6 dark:bg-secondary-drk bg-secondary-lgt shadow-md flex flex-col gap-6 sm:h-1/2 sm:justify-center sm:mt-32" aria-label="options">
