@@ -38,8 +38,8 @@ import fs from "fs";
   const tonightTomorrow = Math.abs(48 - currentHour);
 
 //Express and Middleware
-const app = express();
-const port = 3000;
+  const app = express();
+  const port = 3000;
   app.use(express.static("public"));
   app.use(bodyParser.urlencoded({ extended: true }));
   app.set("view engine", "ejs");
