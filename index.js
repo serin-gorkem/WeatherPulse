@@ -50,14 +50,16 @@ const port = 3000;
   })
 
 // Post Requests
-  app.post("/", async (req,res) => {
+  app.post("/location", async (req,res) => {
     cityName = req.body.city_name
     MakeRequest(res,"location");
   })
 
   app.post("/pref", async (req,res) => {
     var path = req.body.page;
-    if(path === null || path === "" || path === "tomorrow"){
+    if(path === "details"){
+      path = "details";
+    }else{
       path = "location";
     }
     ChangeUnit(req.body.userUnit);
@@ -87,7 +89,7 @@ const port = 3000;
 
     });
   })
-  app.post("/location", (req,res) => {
+  app.post("/home", (req,res) => {
     res.render("location", {
       city: cityLoc.data[0],
       data:weatherData.data,
@@ -96,7 +98,6 @@ const port = 3000;
       units:unitsJSON.unit_name,
       language: langJSON,
       unit_symbols: unitsJSON
-
     });
   })
 

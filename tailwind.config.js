@@ -33,6 +33,37 @@ module.exports = {
         
       },
     },
+    keyframes:{
+      "fade-in":{
+        '0%' :{
+          opacity : "0",
+        },
+        '100%' : {
+          opacity : "1",
+        }
+      },
+      "slide-left":{
+        '0%' :{
+          transform : "translateX(24rem)",
+        },
+        '100%' : {
+          transform : "translateX(-w-96)",
+        }
+      },
+      "slide-up":{
+        '0%' :{
+          transform : "translateY(-24rem)",
+        },
+        '100%' : {
+          transform : "translateX(h-auto)",
+        }
+      }
+    },
+    animation:{
+        "fade-in" : "fade-in 2s ease-in-out",
+        "slide-left":"slide-left 0.3s ease-in alternate forwards",
+        "slide-up":"slide-up 0.3s ease-in alternate forwards",
+    }
   },
   plugins: [],
 }

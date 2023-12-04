@@ -43,14 +43,15 @@
             }
         })
     }
+
 </script>
-<body class="bg-primary-lgt dark:bg-primary-drk dark:text-white text-black font-semibold ">
+<body class="bg-primary-lgt dark:bg-primary-drk dark:text-white text-black font-semibold animate-fade-in">
     <header class="px-5 py-4 z-10 dark:bg-secondary-drk bg-secondary-lgt">
         <% if(locals.language) {%>
         <section class="max-container">
-            <nav class="flex justify-between items-center relative" aria-label="main">
+            <nav class="flex sm:justify-around justify-between items-center relative " aria-label="main">
                 <% if(locals.city && locals.data) {%>
-                <ul class="flex justify-center items-center gap-1">
+                <ul class="flex justify-center items-center gap-1 ">
                     <li  class="w-6 h-6 flex justify-center items-center">
                         <a href="/">
                             <img src="img/logo.png" alt="brand-logo" />
@@ -64,6 +65,22 @@
                     </li>
                 </ul>
                 <% } %>
+                <form action="location" method="post" id="submit-city-name" class="w-7/12 relative hidden sm:block">
+                    <button type="reset" class="absolute top-2.5 right-3 cursor-pointer ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6l-5.6 5.6Z" />
+                        </svg>
+                    </button>
+                    <input id="city_input" type="text" name="city_name" placeholder="Search" required
+                        class="py-2.5 px-12 w-full rounded-md  dark:bg-primary-drk bg-primary-lgt">
+                    <button class="absolute left-3 top-2.5  cursor-pointer z-10 " onclick="sendForm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M9.5 4a6.5 6.5 0 0 1 6.5 6.5c0 1.62-.59 3.1-1.57 4.23l5.65 5.65l-.71.71l-5.65-5.65A6.469 6.469 0 0 1 9.5 17A6.5 6.5 0 0 1 3 10.5A6.5 6.5 0 0 1 9.5 4m0 1A5.5 5.5 0 0 0 4 10.5A5.5 5.5 0 0 0 9.5 16a5.5 5.5 0 0 0 5.5-5.5A5.5 5.5 0 0 0 9.5 5Z" />
+                        </svg>
+                    </button>
+                </form>
                 <button id="hamburger-button" class="relative h-8 w-8 px-4 cursor-pointer text-3xl flex justify-center items-center" onclick="toggleMenu()">
                     <div
                         class="absolute top-4 -mt-0.5 h-[3px] w-8 rounded bg-primary-lgt transition-all duration-500 before:absolute before:h-[3px] before:w-6 before:-translate-x-4 before:-translate-y-2 before:rounded before:bg-primary-lgt before:transition-all before:duration-500 before:content-[''] after:absolute after:h-[3px] after:w-7 after:-translate-x-4 after:translate-y-2 after:rounded after:bg-primary-lgt after:transition-all after:duration-500 after:content-['']">
@@ -72,14 +89,14 @@
             </nav>
         </section>
         <%# Mobile Menu %>
-        <section id="mobile-menu" class="fixed top-0 left-0 w-screen flex-col items-center pb-8 z-10 bg-secondary-lgt dark:bg-secondary-drk hidden ">
+        <section id="mobile-menu" class="fixed top-0 left-0 w-screen h-auto flex-col items-center pb-8 z-10 bg-secondary-lgt dark:bg-secondary-drk hidden sm:right-0 sm:w-96 sm:h-full sm:left-auto sm:animate-slide-left animate-slide-up">
             <article class="p-4 w-full flex justify-between relative" aria-label="mobile">
                 <div class="flex justify-center items-center gap-2">
                     <a href="/">
                         <h1 class=" font-title font-semibold sm:text-lg text-sm text-primary-lgt">Weather Pulse</h1>
                     </a>
-                    <a href="/" class="sm:w-10 sm:h-10">
-                        <img src="img/logo.png" alt="brand-logo" class="bg-center w-7 h-7" />
+                    <a href="/" class="">
+                        <img src="img/logo.png" alt="brand-logo" class="bg-center w-7 h-7 sm:w-8 sm:h-8" />
                     </a>
                 </div>
                 <button id="close-button"
@@ -89,17 +106,17 @@
                     </div>
                 </button>
             </article>
-            <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4">
-            <article class="py-2 flex flex-col gap-4 items-center w-full mb-4">
+            <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4 sm:w-96 sm:mt-1">
+            <article class="py-2 flex flex-col gap-4 items-center w-full mb-4 sm:justify-center sm:hidden">
                 <%# Search bar %>
-                    <form method="post" id="submit-city-name" class="w-5/6 relative">
+                    <form action="location" method="post" id="submit-city-name" class="w-5/6 relative">
                         <button type="reset" class="absolute top-2.5 right-3 cursor-pointer ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                 <path fill="currentColor"
                                     d="m6.4 18.308l-.708-.708l5.6-5.6l-5.6-5.6l.708-.708l5.6 5.6l5.6-5.6l.708.708l-5.6 5.6l5.6 5.6l-.708.708l-5.6-5.6l-5.6 5.6Z" />
                             </svg>
                         </button>
-                        <input id="city_input" type="text" name="city_name" placeholder="Search"required
+                        <input id="city_input" type="text" name="city_name" placeholder="Search" required
                             class="py-2.5 px-12 w-full rounded-md  dark:bg-primary-drk bg-primary-lgt">
                         <button class="absolute left-3 top-2.5  cursor-pointer z-10 " onclick="sendForm">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -109,17 +126,17 @@
                         </button>
                     </form>
                     <% if(locals.city && locals.data) {%>
-                        <p class="w-5/6 font-body text-2xs font-semibold text-primary-lgt">
+                        <p class="w-5/6 font-body text-2xs font-semibold text-primary-lgt sm:hidden">
                             <%= city.name%> , <%= city.name%> <%= data.current.temp.toFixed(0)%>°C
                         </p>
                         <% } %>
             </article>
-            <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4">
-            <article class="px-8 py-4 w-5/6 dark:bg-secondary-drk bg-secondary-lgt shadow-md flex flex-col gap-6" aria-label="options">
+            <hr class="dark:border-primary-drk border-primary-lgt w-screen mb-4 sm:hidden">
+            <article class="px-8 sm:px-3 py-4 w-5/6 dark:bg-secondary-drk bg-secondary-lgt shadow-md flex flex-col gap-6 sm:h-1/2 sm:justify-center sm:mt-32" aria-label="options">
                 <figure class="sm:text-lg">
                     <figcaption> 
                         <form method="post">
-                            <button formaction="location" type="submit" class="text-primary-lgt">
+                            <button formaction="home" type="submit" class="text-primary-lgt">
                                 <%= language.nav_home %>
                             </button>
                         </form>
