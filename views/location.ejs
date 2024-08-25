@@ -1,116 +1,197 @@
 <%- include("partials/header.ejs") %>
-<main class="max-container">
-        <% if(locals.language && locals.unit_symbols && locals.data_current && locals.data_today && locals.data_tomorrow && locals.data_tonight) {%>
-        <section>
-            <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
-                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
-                    <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt"><%= language.current_weather %></figcaption>
-                    <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
-                        <%= hour %>
-                    </p>
-                </figure>
-                <figure class="flex flex-col justify-center items-center gap-3 sm:h-60">
-                    <div class="flex items-center justify-center gap-2 ">
-                        <div class="flex items-center justify-center w-24 h-28 py-4 px-2">
-                            <img src="https://openweathermap.org/img/wn/<%= data_current.weather[0].icon %>@2x.png" alt="weather-icon" class=" w-full h-full">
-                        </div>
-                        <div class="flex flex-col gap-1">
-                            <figcaption>
-                                <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg font-normal sm:text-xl"> <%= data_current.weather[0].description.charAt(0).toUpperCase()%><%= data_current.weather[0].description.slice(1)%></p>
-                            </figcaption>
-                            <p style="text-shadow: 0px 4px 4px #00000020;" class="font-numbers font-bold text-4xl sm:text-5xl pl-2"><%= data_current.temp.toFixed(0)%>°<span class="text-xl font-title"><%= unit_symbols.unit_degree %></span></p>
-                            <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal sm:text-lg"><%= language.feels_like%> <%= data_current.feels_like.toFixed(0)%> <span class="text-xs"><%= unit_symbols.unit_degree %>°</span></p>
-                        </div>
-                    </div>
-                    <form method="post">
-                        <button formaction="/details" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
-                            <%= language.more_details %>
-                        </button>
-                    </form>
-                </figure>
-            </article>
-            <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
-                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
-                    <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt"><%= language.todays_weather_forecast %></figcaption>
-                    <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
-                        <%= today %>
-                    </p>
-                </figure>
+    <main class="max-container">
+        <% if(locals.language && locals.unit_symbols && locals.data_current && locals.data_today && locals.data_tomorrow
+            && locals.data_tonight) {%>
+            <section>
+                <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                    <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                        <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt">
+                            <%= language.current_weather %>
+                        </figcaption>
+                        <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
+                            <%= hour %>
+                        </p>
+                    </figure>
                     <figure class="flex flex-col justify-center items-center gap-3 sm:h-60">
                         <div class="flex items-center justify-center gap-2 ">
                             <div class="flex items-center justify-center w-24 h-28 py-4 px-2">
-                                <img src="https://openweathermap.org/img/wn/<%= data_today.weather[0].icon %>@2x.png" alt="weather-icon" class=" w-full h-full">
+                                <img src="https://openweathermap.org/img/wn/<%= data_current.weather[0].icon %>@2x.png"
+                                    alt="weather-icon" class=" w-full h-full">
                             </div>
                             <div class="flex flex-col gap-1">
                                 <figcaption>
-                                    <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg font-normal sm:text-xl"> <%= data_today.weather[0].description.charAt(0).toUpperCase()%><%= data_today.weather[0].description.slice(1)%></p>
+                                    <p style="text-shadow: 0px 4px 4px #00000040;"
+                                        class="text-lg font-normal sm:text-xl">
+                                        <%= data_current.weather[0].description.charAt(0).toUpperCase()%>
+                                            <%= data_current.weather[0].description.slice(1)%>
+                                    </p>
                                 </figcaption>
-                                <p style="text-shadow: 0px 4px 4px #00000020;" class="font-numbers font-bold text-4xl sm:text-5xl pl-2"><%= data_today.temp.day.toFixed(0)%>°<span class="text-xl font-title"><%= unit_symbols.unit_degree %></span></p>
-                                <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal"><%= language.feels_like %> <%= data_today.feels_like.day.toFixed(0)%> <span class="text-xs"><%= unit_symbols.unit_degree %>°</span></p>
+                                <p style="text-shadow: 0px 4px 4px #00000020;"
+                                    class="font-numbers font-bold text-4xl sm:text-5xl pl-2">
+                                    <%= data_current.temp.toFixed(0)%>°<span class="text-xl font-title">
+                                            <%= unit_symbols.unit_degree %>
+                                        </span>
+                                </p>
+                                <p style="text-shadow: 0px 4px 4px #00000040;"
+                                    class="text-sm pl-2 font-body font-normal sm:text-lg">
+                                    <%= language.feels_like%>
+                                        <%= data_current.feels_like.toFixed(0)%> <span class="text-xs">
+                                                <%= unit_symbols.unit_degree %>°
+                                            </span>
+                                </p>
                             </div>
                         </div>
                         <form method="post">
-                            <button formaction="/details" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
+                            <button aria-label="current detailed weather button" formaction="/details" type="submit"
+                                style="-webkit-tap-highlight-color: transparent;"
+                                class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
                                 <%= language.more_details %>
                             </button>
                         </form>
                     </figure>
-            </article>
-            <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
-                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
-                    <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt"><%= language.tonights_weather_forecast %></figcaption>
-                    <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
-                        <%= today %>
-                    </p>
-                </figure>
+                </article>
+                <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                    <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                        <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt">
+                            <%= language.todays_weather_forecast %>
+                        </figcaption>
+                        <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
+                            <%= today %>
+                        </p>
+                    </figure>
                     <figure class="flex flex-col justify-center items-center gap-3 sm:h-60">
                         <div class="flex items-center justify-center gap-2 ">
                             <div class="flex items-center justify-center w-24 h-28 py-4 px-2">
-                                <img src="https://openweathermap.org/img/wn/<%= data_tonight.weather[0].icon %>@2x.png" alt="weather-icon" class=" w-full h-full">
+                                <img src="https://openweathermap.org/img/wn/<%= data_today.weather[0].icon %>@2x.png"
+                                    alt="weather-icon" class=" w-full h-full">
                             </div>
                             <div class="flex flex-col gap-1">
                                 <figcaption>
-                                    <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg font-normal sm:text-xl"> <%= data_tonight.weather[0].description.charAt(0).toUpperCase()%><%= data_tonight.weather[0].description.slice(1)%></p>
+                                    <p style="text-shadow: 0px 4px 4px #00000040;"
+                                        class="text-lg font-normal sm:text-xl">
+                                        <%= data_today.weather[0].description.charAt(0).toUpperCase()%>
+                                            <%= data_today.weather[0].description.slice(1)%>
+                                    </p>
                                 </figcaption>
-                                <p style="text-shadow: 0px 4px 4px #00000020;" class="font-numbers font-bold text-4xl sm:text-5xl pl-2"><%= data_today.temp.night.toFixed(0)%>°<span class="text-xl font-title"><%= unit_symbols.unit_degree %></span></p>
-                                <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm pl-2 font-body font-normal"><%= language.feels_like %> <%= data_today.feels_like.night.toFixed(0)%> <span class="text-xs"><%= unit_symbols.unit_degree %>°</span></p>
+                                <p style="text-shadow: 0px 4px 4px #00000020;"
+                                    class="font-numbers font-bold text-4xl sm:text-5xl pl-2">
+                                    <%= data_today.temp.day.toFixed(0)%>°<span class="text-xl font-title">
+                                            <%= unit_symbols.unit_degree %>
+                                        </span>
+                                </p>
+                                <p style="text-shadow: 0px 4px 4px #00000040;"
+                                    class="text-sm pl-2 font-body font-normal">
+                                    <%= language.feels_like %>
+                                        <%= data_today.feels_like.day.toFixed(0)%> <span class="text-xs">
+                                                <%= unit_symbols.unit_degree %>°
+                                            </span>
+                                </p>
                             </div>
                         </div>
                         <form method="post">
-                            <button formaction="/details" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
+                            <button aria-label="todays detailed weather button" formaction="/details" type="submit"
+                                style="-webkit-tap-highlight-color: transparent;"
+                                class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
                                 <%= language.more_details %>
                             </button>
                         </form>
                     </figure>
-            </article>
-            <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
-                <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
-                    <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt"><%= language.tomorrow_weather_forecast %></figcaption>
-                    <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
-                        <%= tomorrow %>
-                    </p>
-                </figure>
+                </article>
+                <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                    <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                        <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt">
+                            <%= language.tonights_weather_forecast %>
+                        </figcaption>
+                        <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
+                            <%= today %>
+                        </p>
+                    </figure>
                     <figure class="flex flex-col justify-center items-center gap-3 sm:h-60">
                         <div class="flex items-center justify-center gap-2 ">
                             <div class="flex items-center justify-center w-24 h-28 py-4 px-2">
-                                <img src="https://openweathermap.org/img/wn/<%= data_tomorrow.weather[0].icon %>@2x.png" alt="weather-icon" class=" w-full h-full">
+                                <img src="https://openweathermap.org/img/wn/<%= data_tonight.weather[0].icon %>@2x.png"
+                                    alt="weather-icon" class=" w-full h-full">
                             </div>
                             <div class="flex flex-col gap-1">
                                 <figcaption>
-                                    <p style="text-shadow: 0px 4px 4px #00000040;" class="text-lg font-normal sm:text-xl"> <%= data_tomorrow.weather[0].description.charAt(0).toUpperCase()%><%= data_tomorrow.weather[0].description.slice(1)%></p>
+                                    <p style="text-shadow: 0px 4px 4px #00000040;"
+                                        class="text-lg font-normal sm:text-xl">
+                                        <%= data_tonight.weather[0].description.charAt(0).toUpperCase()%>
+                                            <%= data_tonight.weather[0].description.slice(1)%>
+                                    </p>
                                 </figcaption>
-                                <p style="text-shadow: 0px 4px 4px #00000040;"class="font-numbers font-bold text-4xl sm:text-5xl pl-2"><%= data_tomorrow.temp.day.toFixed(0)%>°<span class="text-xl font-title"><%= unit_symbols.unit_degree %></span></p>
-                                <p style="text-shadow: 0px 4px 4px #00000040;" class="text-sm  font-body font-normal pl-2"><%= language.feels_like %> <%= data_tomorrow.feels_like.day.toFixed(0)%> <span class="text-xs"><%= unit_symbols.unit_degree %>°</span></p>
+                                <p style="text-shadow: 0px 4px 4px #00000020;"
+                                    class="font-numbers font-bold text-4xl sm:text-5xl pl-2">
+                                    <%= data_today.temp.night.toFixed(0)%>°<span class="text-xl font-title">
+                                            <%= unit_symbols.unit_degree %>
+                                        </span>
+                                </p>
+                                <p style="text-shadow: 0px 4px 4px #00000040;"
+                                    class="text-sm pl-2 font-body font-normal">
+                                    <%= language.feels_like %>
+                                        <%= data_today.feels_like.night.toFixed(0)%> <span class="text-xs">
+                                                <%= unit_symbols.unit_degree %>°
+                                            </span>
+                                </p>
                             </div>
                         </div>
                         <form method="post">
-                            <button formaction="/tomorrow" type="submit" style="-webkit-tap-highlight-color: transparent;" class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
+                            <button aria-label="tonights detailed weather button" formaction="/details" type="submit"
+                                style="-webkit-tap-highlight-color: transparent;"
+                                class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
                                 <%= language.more_details %>
                             </button>
                         </form>
                     </figure>
-            </article>
-        </section>
-        <% } %>
+                </article>
+                <article class="h-60 sm:h-72 dark:bg-primary-drk bg-primary-lgt m-5 shadow-lg">
+                    <figure class="flex justify-between px-5 py-2 shadow-md text-sm">
+                        <figcaption class="font-title font-normal sm:text-xl dark:text-primary-lgt">
+                            <%= language.tomorrow_weather_forecast %>
+                        </figcaption>
+                        <p class="font-numbers font-thin dark:text-primary-lgt sm:text-xl">
+                            <%= tomorrow %>
+                        </p>
+                    </figure>
+                    <figure class="flex flex-col justify-center items-center gap-3 sm:h-60">
+                        <div class="flex items-center justify-center gap-2 ">
+                            <div class="flex items-center justify-center w-24 h-28 py-4 px-2">
+                                <img src="https://openweathermap.org/img/wn/<%= data_tomorrow.weather[0].icon %>@2x.png"
+                                    alt="weather-icon" class=" w-full h-full">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <figcaption>
+                                    <p style="text-shadow: 0px 4px 4px #00000040;"
+                                        class="text-lg font-normal sm:text-xl">
+                                        <%= data_tomorrow.weather[0].description.charAt(0).toUpperCase()%>
+                                            <%= data_tomorrow.weather[0].description.slice(1)%>
+                                    </p>
+                                </figcaption>
+                                <p style="text-shadow: 0px 4px 4px #00000040;"
+                                    class="font-numbers font-bold text-4xl sm:text-5xl pl-2">
+                                    <%= data_tomorrow.temp.day.toFixed(0)%>°<span class="text-xl font-title">
+                                            <%= unit_symbols.unit_degree %>
+                                        </span>
+                                </p>
+                                <p style="text-shadow: 0px 4px 4px #00000040;"
+                                    class="text-sm  font-body font-normal pl-2">
+                                    <%= language.feels_like %>
+                                        <%= data_tomorrow.feels_like.day.toFixed(0)%> <span class="text-xs">
+                                                <%= unit_symbols.unit_degree %>°
+                                            </span>
+                                </p>
+                            </div>
+                        </div>
+                        <form method="post">
+                            <button aria-label="tomorrow's detailed weather button" formaction="/tomorrow" type="submit"
+                                style="-webkit-tap-highlight-color: transparent;"
+                                class="dark:bg-icons-drk bg-primary-lgt shadow-lg rounded-lg py-3 px-5 font-interactive font-normal w-40 dark:active:bg-primary-drk active:shadow-inner-lg  hover:opacity-70">
+                                <%= language.more_details %>
+                            </button>
+                        </form>
+                    </figure>
+                </article>
+            </section>
+            <% } %>
     </main>
-<%- include("partials/footer.ejs") %>
+    <%- include("partials/footer.ejs") %>

@@ -24,6 +24,7 @@ module.exports = {
         'icons-drk':"#FF7A00",
       },
       backgroundImage: {
+        "main": "/img/bg.avif"
       },
       screens: {
         "wide": "1440px"
